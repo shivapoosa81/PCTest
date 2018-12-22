@@ -34,5 +34,8 @@
     "protractor-cucumber-framework": "^6.1.1",
     "protractor-multiple-cucumber-html-reporter-plugin": "^1.8.0",
     "shelljs": "^0.8.3"
+  },
+  "dependencies": {
+    "jasmine-allure-reporter": "^1.0.2"
   }
 }

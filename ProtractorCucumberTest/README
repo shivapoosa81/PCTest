@@ -14,3 +14,7 @@ npm install --save-dev protractor-multiple-cucumber-html-reporter-plugin
 npm install --save-dev shelljs
 npm install --save-dev jasmine-data-provider
 npm install --save-dev fs
+
+
+./node_modules/protractor/bin/webdriver-manager update
+./node_modules/.bin/protractor config/config.js

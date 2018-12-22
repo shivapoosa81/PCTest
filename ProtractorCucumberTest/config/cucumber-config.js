@@ -4,7 +4,6 @@ exports.config = {
 
     params:{
         javaScripttility: require('../utils/JavaScriptUtility.js'),
-        pageObject: require('../pages/angularJasminePO.js'),
         selectors: require("../selectors/selectorFields.json"),
         baseUrl: 'https://angular.io/'
     },
@@ -23,12 +22,11 @@ exports.config = {
     allScriptsTimeout: 6000000,
     ignoreUncaughtExceptions: true,
     getPageTimeout: 6000000,
-    framework: 'jasmine2',
-    //frameworkPath: require.resolve("protractor-cucumber-framework"),
-    specs: ["../jasmine/*.js"],
+    framework: 'custom',
+    frameworkPath: require.resolve("protractor-cucumber-framework"),
+    specs: ["../features/*.feature"],
 
     onPrepare: function(){
-        //global.browser = browser;
         global.object = browser.params;
         global.selectors = object.selectors;
         global.pageObject = object.pageObject;
@@ -37,34 +35,32 @@ exports.config = {
         browser.iggnoreUncaughtExceptions = true;
         browser.manage().window().maximize();
         require('babel-register');
-
-        var AllureReporter = require("jasmine-allure-reporter");
-        jasmine.getEnv().addReporter(new AllureReporter({
-            resultsDir: 'allure-results'
-        }));
-
-        jasmine.getEnv().afterEach(function(done){
-            browser.takeScreenshot().then(function(png){
-                allure.createAttachment('Screenshot', function(){
-                    return new Buffer(png, 'base64')
-                }, 'image/png')();
-                done();
-            });
-        });
     },
 
+    plugins: [
+        {
+            package: 'protractor-multiple-cucumber-html-reporter-plugin',
+            options: {
+                automaticallyGenerateReport: true,
+                removeExistingJsonReportFile: true,
+                displayDuration: true,
+                durationInMS: true
+            }
+        }
+    ],
 
-    jasmineNodeOpts: {
+    cucumberOpts: {
 
-        showTiming: true,
-        showColors: true,
-        isVerbose: true,
-        includeStackTrace: true,
-        defaultTimeoutInterval: 300000
+    strict: true,
+    format: ["json:../ProtractorCucumberTest/reports/json/cucumber-report.json"],
+    require: ["../stepdefs/*.js","../support/*.js"],
+    tags:"@test",
+    profile:false,
+    'no-source': true
 
-    },
+},
 
-    onComplete: function(){
+onComplete: function(){
 
-    }
+}
 }
