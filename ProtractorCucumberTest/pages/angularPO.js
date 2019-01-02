@@ -1,10 +1,20 @@
+import {element} from "protractor";
+
 const EC = browser.ExpectedConditions;
 
-export default class angularPO {
-         login() {
-            console.log("hello!!!!!!!!!!!!!!!!!");
-            browser.get(object.baseUrl);
-        }
-
-
+export function login() {
+    browser.get(object.baseUrl);
 }
+
+
+export function getLabel(){
+     return element(by.css(".card .text-headline")).getText();
+}
+
+// export default class angularPO {
+//
+//         async getLabel(){
+//              await element(by.css(".card .text-headline")).getText();
+//         }
+//
+//}

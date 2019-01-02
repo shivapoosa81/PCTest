@@ -2,20 +2,17 @@ import {browser} from 'protractor';
 import { Given, When, Then, And, BeforeAll, After, AfterAll, setDefaultTimeOut} from 'cucumber';
 const chai = require("chai");
 require("chai").use(require("chai-as-promised"));
-const expect = chai.expect;
+const expect = require('chai').expect;
 
-import {pageObject} from "../pages/angularPO.js";
-const pageObject1 = require("../pages/angularJasminePO");
+import * as pageObject from "../pages/angularPO.js";
 
 Given(/^angular URL$/, function(){
-console.log(pageObject.login());
-console.log(pageObject1.login1());
-});
-
-When(/^I search for the label$/, function(){
+pageObject.login();
 
 });
 
-Then(/^check label is available$/,function(){
+Then(/^check label is available$/, async function(){
+///console.log(pageObject.getLabel());
 
+return expect(pageObject.getLabel()).to.eventually.equal("GET STARTED");
 });

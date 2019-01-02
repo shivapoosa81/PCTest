@@ -52,7 +52,7 @@ exports.config = {
     cucumberOpts: {
 
     strict: true,
-    format: ["json:../ProtractorCucumberTest/reports/json/cucumber-report.json"],
+    format: ["json:./reports/cucumber-report.json"],
     require: ["../stepdefs/*.js","../support/*.js"],
     tags:"@test",
     profile:false,
