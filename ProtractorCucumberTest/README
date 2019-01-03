@@ -18,3 +18,4 @@ npm install --save-dev fs
 
 ./node_modules/protractor/bin/webdriver-manager update
 ./node_modules/.bin/protractor config/config.js
+./node_modules/allure-commandline/bin/allure serve allure-results/
