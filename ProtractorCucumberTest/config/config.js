@@ -6,6 +6,7 @@ exports.config = {
         javaScripttility: require('../utils/JavaScriptUtility.js'),
         pageObject: require('../pages/angularJasminePO.js'),
         selectors: require("../selectors/selectorFields.json"),
+        search: require("../testdata/search.js"),
         baseUrl: 'https://angular.io/'
     },
 
@@ -31,6 +32,7 @@ exports.config = {
         //global.browser = browser;
         global.object = browser.params;
         global.selectors = object.selectors;
+        console.log(object.search.employees);
         global.pageObject = object.pageObject;
         console.log(selectors.s1);
         browser.ignoreSynchronization = true;

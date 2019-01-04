@@ -16,3 +16,11 @@ Then(/^check label is available$/, async function(){
 
 return expect(pageObject.getLabel()).to.eventually.equal("GET STARTED");
 });
+
+Then(/^validate data$/, async function(dataTable){
+
+    for(var data of dataTable.rawTable){
+        console.log(data[0]);
+    }
+    return expect(pageObject.getLabel()).to.eventually.equal("GET STARTED");
+});
