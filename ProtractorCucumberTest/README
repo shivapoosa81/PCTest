@@ -19,3 +19,27 @@ npm install --save-dev fs
 ./node_modules/protractor/bin/webdriver-manager update
 ./node_modules/.bin/protractor config/config.js
 ./node_modules/allure-commandline/bin/allure serve allure-results/
+./node_modules/.bin/protractor config/config.js
+--params.runOnUAT Y
+--webDriverProxy http://blahbalh
+--capabilities.username=shiva
+--cucumberOpts.tags="@" || error =true
+
+
+cd ./ProtractorCucumberTest/
+npm install
+if [ "${confFile}" == "config.js"]; then
+/opt/jenkins/m1/workspace/ProtractorCucumberTest/./node_modules/.bin/protractor config/config.js
+                                                 --params.runOnUAT Y
+                                                 --webDriverProxy http://blahbalh
+                                                 --capabilities.username=shiva
+                                                 --cucumberOpts.tags="@" || error =true
+
+fi
+
+HTML reports:
+HTML dir: ProtractorCucumberTest/reports/json/report
+
+cucumber reports:
+ProtractorCucumberTest/reports/json
+File include pattern: cucumber.json
